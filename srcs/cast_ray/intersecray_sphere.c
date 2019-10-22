@@ -3,31 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   intersecray_sphere.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hkuhic <hkuhic@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gwaymar- <gwaymar-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/12 07:32:22 by gwaymar-          #+#    #+#             */
-/*   Updated: 2019/10/17 17:49:14 by hkuhic           ###   ########.fr       */
+/*   Updated: 2019/10/19 08:04:04 by gwaymar-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-double		*intersec_sphere(t_ray ray, t_sphere s, t_sdl *sdl)
+double		*intersec_sphere(t_ray ray, t_sphere s, t_sdl *sdl, double **bb)
 {
 	double	*t;
-	t_vec3	c;
 	t_vec3	v;
 	double	r;
+	t_vec3	b;
 
-	if (!(t = (double *)malloc(sizeof(double) * 2)))
-		return (NULL);
-	sdl->f_center = s.center;
-	sdl->f_blesk = s.blesk;
-	sdl->f_color = s.color;
-	c = s.center;
+	t = *bb;
+	mem_sdl_buf_sph(&sdl, s);
 	r = s.radius;
-	v = vec_op_sub(ray.origin,c);
-	t_vec3 b = ray.direct;
+	v = vec_op_sub(ray.origin, s.center);
+	b = ray.direct;
 	sdl->k1 = vec_dot(b, b);
 	sdl->k2 = 2.f * vec_dot(v, b);
 	sdl->k3 = vec_dot(v, v) - r * r;

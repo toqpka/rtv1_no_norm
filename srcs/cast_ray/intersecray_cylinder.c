@@ -6,42 +6,45 @@
 /*   By: hkuhic <hkuhic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/13 16:50:15 by hkuhic            #+#    #+#             */
-/*   Updated: 2019/10/19 00:38:06 by gwaymar-         ###   ########.fr       */
+/*   Updated: 2019/10/19 08:17:55 by gwaymar-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-double		*intersec_cylinder(t_ray ray, t_cylin s, t_sdl *sdl)
+static double	*cyl_t(double *t, double k2, double dis, double k1)
+{
+	t[0] = (-k2 + sqrt(dis)) / (2 * k1);
+	t[1] = (-k2 - sqrt(dis)) / (2 * k1);
+	return (t);
+}
+
+static double	*cyl_t_max(double *t)
+{
+	t[0] = MAX_DIST;
+	t[1] = MAX_DIST;
+	return (t);
+}
+
+double			*intersec_cylinder(t_ray ray, t_cylin s, t_sdl *sdl,
+														double **bb)
 {
 	double	*t;
-	t_vec3	c;
 	t_vec3	v;
 	t_vec3	x;
 	double	r;
+	t_vec3	b;
 
-	if (!(t = (double *)malloc(sizeof(double) * 2)))
-		return (NULL);
-	sdl->f_center = s.center;
-	sdl->f_blesk = s.blesk;
-	sdl->f_color = s.color;
-	c = s.center;
+	t = *bb;
+	mem_sdl_buf_cyl(&sdl, s);
 	v = s.vector;
-	r =	s.radius;
-	x = vec_op_sub(ray.origin,c);
-	t_vec3 b = ray.direct;
-	sdl->x = x;
+	r = s.radius;
+	x = vec_op_sub(ray.origin, s.center);
+	b = ray.direct;
 	sdl->k1 = vec_dot(b, b) - vec_dot(b, v) * vec_dot(b, v);
 	sdl->k2 = 2 * (vec_dot(b, x) - vec_dot(b, v) * vec_dot(x, v));
 	sdl->k3 = vec_dot(x, x) - vec_dot(x, v) * vec_dot(x, v) - r * r;
 	sdl->dis = sdl->k2 * sdl->k2 - 4 * sdl->k1 * sdl->k3;
-	if (sdl->dis < 0)
-	{
-		t[0] = MAX_DIST;
-		t[1] = MAX_DIST;
-		return (t);
-	}
-	t[0] = (-sdl->k2 + sqrt(sdl->dis)) / (2 * sdl->k1);
-	t[1] = (-sdl->k2 - sqrt(sdl->dis)) / (2 * sdl->k1);
-	return (t);
+	return ((sdl->dis < 0) ? cyl_t_max(t) :
+			cyl_t(t, sdl->k2, sdl->dis, sdl->k1));
 }

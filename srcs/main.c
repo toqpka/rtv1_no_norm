@@ -6,7 +6,7 @@
 /*   By: gwaymar- <gwaymar-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/10 18:32:56 by gwaymar-          #+#    #+#             */
-/*   Updated: 2019/10/19 01:30:44 by gwaymar-         ###   ########.fr       */
+/*   Updated: 2019/10/21 22:27:45 by gwaymar-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ int				main(int argc, char **argv)
 	if (argc != 2)
 		how_to_use();
 	read_init(&sdl, argv[1]);
-	sdl_render(sdl);
-	sdl_loop(sdl);
-	ft_close(&sdl);
+	//sdl_render(sdl);
+	//sdl_loop(sdl);
+	//ft_close(&sdl);
 	return (0);
 }

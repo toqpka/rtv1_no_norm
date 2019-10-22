@@ -6,7 +6,7 @@
 /*   By: gwaymar- <gwaymar-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/31 16:30:29 by gwaymar-          #+#    #+#             */
-/*   Updated: 2019/10/19 01:28:56 by gwaymar-         ###   ########.fr       */
+/*   Updated: 2019/10/21 22:25:26 by gwaymar-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,63 +47,14 @@
 # define X_LINZE 2
 
 /*
-**	Fill scenes1
-*/
-# define NUMB_OBJ_IN_SCENE1     1
-# define NUMB_SPHERE_IN_SCENE1  1
-# define NUMB_PLANE_IN_SCENE1   0
-# define NUMB_CONE_IN_SCENE1    0
-# define NUMB_CYLINDR_IN_SCENE1 0
-
-# define NUMB_LIGHTS_IN_SCENE1  0
-/*
-**	Fill scenes2
-*/
-# define NUMB_OBJ_IN_SCENE2     1
-# define NUMB_SPHERE_IN_SCENE2  0
-# define NUMB_PLANE_IN_SCENE2   0
-# define NUMB_CONE_IN_SCENE2    0
-# define NUMB_CYLINDR_IN_SCENE2 1
-
-# define NUMB_LIGHTS_IN_SCENE2  0
-/*
-**	Fill scenes3
-*/
-# define NUMB_OBJ_IN_SCENE3     2
-# define NUMB_SPHERE_IN_SCENE3  0
-# define NUMB_PLANE_IN_SCENE3   1
-# define NUMB_CONE_IN_SCENE3    1
-# define NUMB_CYLINDR_IN_SCENE3 0
-
-# define NUMB_LIGHTS_IN_SCENE3  0
-/*
-**	Fill scenes4
-*/
-# define NUMB_OBJ_IN_SCENE4     7
-# define NUMB_SPHERE_IN_SCENE4  2
-# define NUMB_PLANE_IN_SCENE4   3
-# define NUMB_CONE_IN_SCENE4    1
-# define NUMB_CYLINDR_IN_SCENE4 1
-
-# define NUMB_LIGHTS_IN_SCENE4  0
-/*
-**	Fill scenes5
-*/
-# define NUMB_OBJ_IN_SCENE5     16
-# define NUMB_SPHERE_IN_SCENE5  9
-# define NUMB_PLANE_IN_SCENE5   3
-# define NUMB_CONE_IN_SCENE5    0
-# define NUMB_CYLINDR_IN_SCENE5 4
-
-# define NUMB_LIGHTS_IN_SCENE5  0
-
-/*
 **	Objects
 */
+# define STR_CAMERA   "camera"
+# define STR_LIGHT    "light"
 # define STR_SPHERE   "sphere"
 # define STR_PLANE    "plane"
 # define STR_CONE     "cone"
-# define STR_CYLINDR  "cylindr"
+# define STR_CYLINDR  "cylindre"
 
 /*
 **	Some errors

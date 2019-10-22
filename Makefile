@@ -6,7 +6,7 @@
 #    By: gwaymar- <gwaymar-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/01 17:42:35 by gwaymar-          #+#    #+#              #
-#    Updated: 2019/10/19 01:29:32 by gwaymar-         ###   ########.fr        #
+#    Updated: 2019/10/22 04:07:30 by gwaymar-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,33 +14,34 @@ NAME := RTv1
 
 # SRCS files
 SRCS_PATH := ./srcs
-SRCS_FILES := main.c color_pixel.c\
+SRCS_FILES := main.c color_pixel.c mem_buf.c\
 							camera/camera.c\
+							cast_ray/calc_shadow.c\
 							cast_ray/cast_ray.c\
 							cast_ray/intersecray_sphere.c\
 							cast_ray/intersecray_conus.c\
 							cast_ray/intersecray_cylinder.c\
 							cast_ray/intersecray_plane.c\
 							cast_ray/normal_objs.c\
-							drawer/draw_scene1.c\
+							cast_ray/comput_lighting.c\
+							drawer/draw_scene_main.c\
 							objects/fill_all_obj.c\
 							objects/get_objs.c\
 							objects/sphere.c\
 							objects/cone.c\
 							objects/cylinder.c\
 							objects/plane.c\
-							objects/x_exec_obj.c\
+							objects/light.c\
 							objects/x_init_obj.c\
 							objects/x_load_num.c\
+							parse_check/parse_check.c\
+							read_init/fill_objects.c\
 							read_init/sdl_error.c\
 							read_init/read_init.c\
+							read_init/get_list_objs.c\
 							sdl_render/sdl_loop.c\
 							sdl_render/sdl_render.c\
 							scene/scene1.c\
-							scene/scene2.c\
-							scene/scene3.c\
-							scene/scene4.c\
-							scene/scene5.c\
 							surface_sdl/surface.c\
 							vectors/new_vec.c\
 							vectors/normal_vec.c\
@@ -56,7 +57,7 @@ SUB_DIR_OBJ := $(patsubst %, $(OBJECTS_PATH)/%, $(notdir $(shell find $(SRCS_PAT
 
 # cc FLAGS
 CC := gcc
-#CCFLAGS := -Wall -Wextra -Werror
+# CCFLAGS := -Wall -Wextra -Werror
 CCFLAGS := -g
 
 # SDL2

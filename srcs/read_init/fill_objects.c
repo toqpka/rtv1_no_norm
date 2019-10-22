@@ -1,37 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_scene1.c                                      :+:      :+:    :+:   */
+/*   fill_objects.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gwaymar- <gwaymar-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/12 02:13:57 by gwaymar-          #+#    #+#             */
-/*   Updated: 2019/10/18 22:00:40 by gwaymar-         ###   ########.fr       */
+/*   Created: 2019/10/22 03:54:45 by gwaymar-          #+#    #+#             */
+/*   Updated: 2019/10/22 04:11:18 by gwaymar-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-void    draw_scene1(SDL_Surface *surf, t_sdl  **sdl)
+void  fill_camera(char **split, t_vec3 *from, t_vec3 *lookat)
 {
-  int     x;
-  int     y;
-  t_vec3  color;
-  t_basic c;
-  t_ray   ray;
-  t_vec3  a;
+  return ;
+}
 
-  x = -1;
-  while (++x < surf->w)
-  {
-    y = -1;
-    while (++y < surf->h)
-    {
-      ray = get_camera_ray(*sdl, surf, x, y);
-      color = cast_ray(ray, *sdl);
-      put_pixel(surf, x, y,
-        pack_color(color.x,color.y,color.z));
-    }
-  }
+void  fill_light(char **split, t_light *new_light, int *i)
+{
+  return ;
+}
+
+void  fill_sphere(char **split, t_sphere *new_sphere, int *i)
+{
+  return ;
+}
+
+void  fill_plane(char **split, t_plane *new_plane, int *i)
+{
+  return ;
+}
+
+void  fill_cone(char **split, t_cone *new_cone, int *i)
+{
+  return ;
+}
+
+void  fill_cylin(char **split, t_cylin *new_cylinder, int *i)
+{
   return ;
 }
