@@ -6,7 +6,7 @@
 /*   By: gwaymar- <gwaymar-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/12 00:45:29 by gwaymar-          #+#    #+#             */
-/*   Updated: 2019/10/22 04:12:37 by gwaymar-         ###   ########.fr       */
+/*   Updated: 2019/10/22 07:38:21 by gwaymar-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,7 @@ void			ft_init(t_sdl **sdl)
 	(*sdl)->win = NULL;
 	(*sdl)->screen = NULL;
 	(*sdl)->image = NULL;
-	(*sdl)->run_main = 1;
-	(*sdl)->num_obj = 0;
+	(*sdl)->run_main = 1;	
 	(*sdl)->obj = NULL;
 	(*sdl)->rot_ang = vec_new(0, 0, 0);
 	if (!(init_sdl(sdl)))
@@ -64,10 +63,10 @@ void			read_init(t_sdl **sdl, char *av)
 		printf("BAD!\n"); /////////
 		how_to_use();
 	}
-	get_list_objs(sdl, av);
-	printf("SDL_NBRS cam=%d sphere=%d plane=%d\n",(*sdl)->nbrs.num_cam, (*sdl)->nbrs.num_sph,(*sdl)->nbrs.num_pla);
-  printf("SDL_NBRS con=%d cylindr=%d light=%d\n",(*sdl)->nbrs.num_con, (*sdl)->nbrs.num_cyl,(*sdl)->nbrs.num_lig);
-  printf("SDL_ALL=%d\n",(*sdl)->nbrs.num_obj);
+	get_list_objs(*sdl, av);
+
+	//////////  OUT  after  parsing
+
 	printf("GOOOD!\n"); ///////////
 	return ;
 }

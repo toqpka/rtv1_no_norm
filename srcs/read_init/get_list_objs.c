@@ -6,7 +6,7 @@
 /*   By: gwaymar- <gwaymar-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 03:26:26 by gwaymar-          #+#    #+#             */
-/*   Updated: 2019/10/22 04:13:28 by gwaymar-         ###   ########.fr       */
+/*   Updated: 2019/10/22 07:25:34 by gwaymar-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,25 +16,12 @@ t_sphere	*exec_sphere_1(t_sdl *sdl)
 {
 	t_sphere	*spheres;
 	int			nbrs_sph;
-	int			k;
-
-
-	// t_sphere sp;
-	// sp.center;
-	// sp.radius;
-	// sp.blesk;
-	// sp.color;
 
 	if (!(nbrs_sph = sdl->nbrs.num_sph))
 		return (NULL);
 	spheres = create_null_list_spheres(nbrs_sph);
 	if (!(spheres))
 		ft_print_error_exit(&ft_putendl, "Error, no_spheres");
-	// k = -1;
-	// while (++k < sdl->nbrs.num_sph)
-	// {
-	// 	spheres[k] = sphere_new(sp.center, sp.radius, sp.blesk, sp.color);
-	// }
 	return (spheres);
 }
 
@@ -42,16 +29,12 @@ t_cone		*exec_cone_1(t_sdl *sdl)
 {
 	t_cone	*cone;
 	int		nbrs_cone;
-	t_vec3	v;
 
 	if (!(nbrs_cone = sdl->nbrs.num_con))
 		return (NULL);
 	cone = create_null_list_cone(nbrs_cone);
 	if (!(cone))
 		ft_print_error_exit(&ft_putendl, "Error, no_cone");
-	// v = vec_new(0, 2, 0);
-	// v = vec_new(v.x / vec_length(v), v.y / vec_length(v), v.z / vec_length(v));
-	// cone[0] = cone_new(vec_new(0, 0, 2), v, vec_new(255, 0, 255), 0.6);
 	return (cone);
 }
 
@@ -65,7 +48,6 @@ t_plane		*exec_plane_1(t_sdl *sdl)
 	plane = create_null_list_plane(nbrs_plane);
 	if (!(plane))
 		ft_print_error_exit(&ft_putendl, "Error, no_plane");
-	// plane[0] = plane_new(vec_new(0, 1, 0), vec_new(0, -3, -10), 250, vec_new(200, 200, 200));
 	return (plane);
 }
 
@@ -80,10 +62,36 @@ t_cylin		*exec_cylinder_1(t_sdl *sdl)
 	cylin = create_null_list_cylinder(nbrs_cylin);
 	if (!(cylin))
 		ft_print_error_exit(&ft_putendl, "Error, no_cylinder");
-	// v = vec_new(0, 1, 0);
-	// v = vec_new(v.x / vec_length(v), v.y / vec_length(v), v.z / vec_length(v));
-	// cylin[0] = cylin_new(vec_new(4, 1, 0), v, 0.6, vec_new(250, 250, 250));
 	return (cylin);
+}
+
+t_light		*exec_light_1(t_sdl *sdl)
+{
+	t_light		*light;
+	int			nbrs_light;
+
+	if (!(nbrs_light = sdl->nbrs.num_lig))
+		return (NULL);
+	light = create_null_list_lights(nbrs_light);
+	if (!(light))
+		ft_print_error_exit(&ft_putendl, "Error, ni_light");
+	return (light);
+}
+
+static void		fill_all(t_obj ***all_obj, t_all_obj objs, int *nmbr)
+{
+	int	i;
+
+	i = 0;
+	if (objs.new_sphere)
+		fill_objs_sphere(all_obj, objs.new_sphere, &i, nmbr[0]);
+	if (objs.new_cone)
+		fill_objs_cone(all_obj, objs.new_cone, &i, nmbr[1]);
+	if (objs.new_plane)
+		fill_objs_plane(all_obj, objs.new_plane, &i, nmbr[2]);
+	if (objs.new_cylinder)
+		fill_objs_cylin(all_obj, objs.new_cylinder, &i, nmbr[3]);
+	return ;
 }
 
 void    get_list_objs(t_sdl *sdl, char *path)
@@ -101,14 +109,56 @@ void    get_list_objs(t_sdl *sdl, char *path)
 
 	t_nbr_all all_n;
 
+	nbr_light = sdl->nbrs.num_lig;
+
+	printf("____________exec_NULL_LIST___________\n");
+	printf("SDL_NBRS cam=%d sphere=%d plane=%d\n",sdl->nbrs.num_cam, sdl->nbrs.num_sph,sdl->nbrs.num_pla);
+	printf("SDL_NBRS con=%d cylindr=%d light=%d\n",sdl->nbrs.num_con, sdl->nbrs.num_cyl,sdl->nbrs.num_lig);
+	printf("SDL_ALL=%d\n",sdl->nbrs.num_obj);
+
+
 	new_sphere = exec_sphere_1(sdl);
 	new_cone = exec_cone_1(sdl);
 	new_plane = exec_plane_1(sdl);
 	new_cylinder = exec_cylinder_1(sdl);
-	//new_light = exec_light(sdl);;
+	new_light = exec_light_1(sdl);
 
 
-	nbr_light = sdl->nbrs.num_lig;
+
+t_all_obj	objs;
+
+objs.new_sphere = new_sphere;
+objs.new_cone = new_cone;
+objs.new_plane = new_plane;
+objs.new_cylinder = new_cylinder;
+
+int			*nmbr;
+
+if (!(nmbr = (int*)malloc(sizeof(int) * 4)))
+	ft_print_error_exit(&ft_putendl, "Error, no_alloc_nbr_obj");
+
+	int num = sdl->nbrs.num_obj;
+	t_obj **all_obj;
+	int	i;
+
+	if (!(all_obj = (t_obj **)malloc(sizeof(t_obj*) * num)))
+		ft_print_error_exit(&ft_putendl, "Error, no_obj");
+	i = -1;
+	while (++i < num)
+	{
+		if (!(all_obj[i] = (t_obj *)malloc(sizeof(t_obj))))
+			ft_print_error_exit(&ft_putendl, "Error, no_obj_elem");
+	}
+
+	nmbr[0]=sdl->nbrs.num_sph;
+	nmbr[1]=sdl->nbrs.num_con;
+	nmbr[2]=sdl->nbrs.num_pla;
+	nmbr[3]=sdl->nbrs.num_cyl;
+	fill_all(&all_obj, objs, nmbr);
+
+	sdl->obj = all_obj;
+
+
 	if (!(new_light = create_null_list_lights(nbr_light)) && nbr_light)
 		ft_print_error_exit(&ft_putendl, "Error, no_alloc_for_light");
 
@@ -117,10 +167,11 @@ void    get_list_objs(t_sdl *sdl, char *path)
 	all_n = sdl->nbrs;
 
 	fd = open(path, O_RDONLY);
+	printf("____________===___________\n");
+	printf("__________filling_____________\n");
 	while (get_next_line(fd, &line) > 0)
 	{
-    printf("gnl tmp_string_full=%s\n",line);
-    split = ft_strsplit(line, ' ');
+		split = ft_strsplit(line, ' ');
 		sdl->block_1 = split[0];
     if (ft_strcmp(STR_CAMERA, sdl->block_1) == 0)
       fill_camera(split, &sdl->lookfr, &sdl->lookat);
@@ -144,5 +195,6 @@ void    get_list_objs(t_sdl *sdl, char *path)
     }
 		free(line);
 	}
+	sdl->light = new_light;
   close(fd);
 }

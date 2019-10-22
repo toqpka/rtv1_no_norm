@@ -6,7 +6,7 @@
 #    By: gwaymar- <gwaymar-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/01 17:42:35 by gwaymar-          #+#    #+#              #
-#    Updated: 2019/10/22 04:07:30 by gwaymar-         ###   ########.fr        #
+#    Updated: 2019/10/22 06:50:53 by gwaymar-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,8 +32,6 @@ SRCS_FILES := main.c color_pixel.c mem_buf.c\
 							objects/cylinder.c\
 							objects/plane.c\
 							objects/light.c\
-							objects/x_init_obj.c\
-							objects/x_load_num.c\
 							parse_check/parse_check.c\
 							read_init/fill_objects.c\
 							read_init/sdl_error.c\

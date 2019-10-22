@@ -6,7 +6,7 @@
 /*   By: gwaymar- <gwaymar-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/19 01:13:18 by gwaymar-          #+#    #+#             */
-/*   Updated: 2019/10/19 08:18:38 by gwaymar-         ###   ########.fr       */
+/*   Updated: 2019/10/22 08:38:45 by gwaymar-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,17 +32,19 @@ t_vec3		normal_cone(t_vec3 p, int i, t_sdl *sdl)
 	return (normal);
 }
 
-t_vec3		normal_cylinder(t_vec3 p, int i, t_sdl *sdl)
+t_vec3		normal_cylinder(t_vec3 p, int i, t_sdl *sdl, double close_t)
 {
 	t_vec3	normal;
+	t_vec3	x;
 	double	dis;
 	t_cylin	cyl;
 
 	cyl = get_cyl(sdl->obj[i]->type);
+	x = vec_op_sub(sdl->norm_cylin.origin, cyl.center);
+	dis = vec_dot(sdl->norm_cylin.direct, cyl.vector) * close_t
+	+ vec_dot(x, cyl.vector);
 	normal = vec_op_sub(p, cyl.center);
-	dis = vec_dot(normal, cyl.vector);
-	normal = vec_op_add(cyl.center, vec_scale(cyl.vector, dis));
-	normal = vec_op_sub(p, cyl.center);
+	normal = vec_op_sub(normal, vec_scale(cyl.vector, dis));
 	normal = unit_vector(normal);
 	return (normal);
 }

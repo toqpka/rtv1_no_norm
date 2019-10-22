@@ -6,7 +6,7 @@
 /*   By: gwaymar- <gwaymar-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 22:28:32 by gwaymar-          #+#    #+#             */
-/*   Updated: 2019/10/22 03:22:44 by gwaymar-         ###   ########.fr       */
+/*   Updated: 2019/10/22 06:52:16 by gwaymar-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,17 +78,17 @@ int			check_letter_alnum(char *str)
 }
 
 
-int   check_str_to_hex(char *block)
-{
-  if (ft_strlen(block) == 6)
-  {
-    if (check_letter_alnum(block))
-    {
-      return (TRUE);
-    }
-  }
-  return (FALSE);
-}
+// int   check_str_to_hex(char *block)
+// {
+//   if (ft_strlen(block) == 6)
+//   {
+//     if (check_letter_alnum(block))
+//     {
+//       return (TRUE);
+//     }
+//   }
+//   return (FALSE);
+// }
 
 int   check_str_to_double(char *str)
 {
@@ -185,7 +185,7 @@ int   try_find_params_5(char *block1, char *block5)
   }
   else
   {
-    if (!check_str_to_hex(block5))
+    if (!check_str_to_vec3(block5))
       return (FALSE);
   }
   return (TRUE);
@@ -193,7 +193,7 @@ int   try_find_params_5(char *block1, char *block5)
 
 int   try_find_params_6(char *block1, char *block6)
 {
-  if (!check_str_to_hex(block6))
+  if (!check_str_to_vec3(block6))
     return (FALSE);
   return (TRUE);
 }

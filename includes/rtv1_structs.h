@@ -6,7 +6,7 @@
 /*   By: gwaymar- <gwaymar-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/10 16:20:54 by gwaymar-          #+#    #+#             */
-/*   Updated: 2019/10/22 03:07:42 by gwaymar-         ###   ########.fr       */
+/*   Updated: 2019/10/22 08:41:41 by gwaymar-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,7 +139,6 @@ typedef struct		s_sdl
 	SDL_Event		event;
 	uint8_t			run_main;
 	uint8_t			scene_num;
-	int				num_obj;
 	t_obj			**obj;
 	t_light			*light;
 	double			k1;
@@ -152,8 +151,8 @@ typedef struct		s_sdl
 	t_vec3			f_center;
 	double			f_blesk;
 	t_vec3			f_color;
-	t_vec3			norm_cylin;
 	t_vec3			norm_cone;
+	t_ray				norm_cylin;
 	double			k;
 	t_vec3			lookat;
 	t_vec3			lookfr;

@@ -6,7 +6,7 @@
 /*   By: gwaymar- <gwaymar-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/10 16:20:57 by gwaymar-          #+#    #+#             */
-/*   Updated: 2019/10/22 04:12:16 by gwaymar-         ###   ########.fr       */
+/*   Updated: 2019/10/22 08:40:27 by gwaymar-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,11 +55,10 @@ t_light		*create_null_list_lights(int nbr);
 t_light		light_new(t_vec3 pos, double intens);
 t_sphere	sphere_new(t_vec3 center, double radius,
 		double blesk, t_vec3 color);
-t_cone		cone_new(t_vec3 center, t_vec3 vector, t_vec3 color, double ang);
+t_cone		cone_new(t_cone		pars_cone);
 t_plane		plane_new(t_vec3 norm, t_vec3 line,
 		double blesk, t_vec3 color);
-t_cylin		cylin_new(t_vec3 center, t_vec3 vector,
-		double radius, t_vec3 color);
+t_cylin		cylin_new(t_cylin		pars_cylin);
 void		fill_objs_sphere(t_obj ***all_obj,
 		t_sphere *sphere, int *i, int max);
 void		fill_objs_cone(t_obj ***all_obj, t_cone *cone, int *i, int max);
@@ -132,7 +131,7 @@ double		*intersec_cylinder(t_ray ray, t_cylin s, t_sdl *sdl, double **bb);
 ** Find normal for objects
 */
 t_vec3		normal_cone(t_vec3 p, int i, t_sdl *sdl);
-t_vec3		normal_cylinder(t_vec3 p, int i, t_sdl *sdl);
+t_vec3		normal_cylinder(t_vec3 p, int i, t_sdl *sdl, double close_t);
 t_vec3		normal_plane(t_vec3 p, int i, t_sdl *sdl);
 t_vec3		normal_sphere(t_vec3 p, int i, t_sdl *sdl);
 
@@ -160,6 +159,6 @@ void  fill_plane(char **split, t_plane *new_plane, int *i);
 void  fill_cone(char **split, t_cone *new_cone, int *i);
 void  fill_cylin(char **split, t_cylin *new_cylinder, int *i);
 
-void    get_list_objs(t_sdl *sdl, char *path);
+void    get_list_objs(t_sdl *sdl2, char *path);
 
 #endif

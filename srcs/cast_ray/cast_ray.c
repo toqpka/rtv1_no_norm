@@ -6,7 +6,7 @@
 /*   By: gwaymar- <gwaymar-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/12 02:20:44 by gwaymar-          #+#    #+#             */
-/*   Updated: 2019/10/21 22:36:06 by gwaymar-         ###   ########.fr       */
+/*   Updated: 2019/10/22 08:39:47 by gwaymar-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,10 @@ t_vec3		calc_color(double close_t, t_ray ray, t_sdl *sdl, int i)
 	else if (ft_strcmp(sdl->obj[i]->c_type, STR_PLANE) == 0)
 		n = normal_plane(p, i, sdl);
 	else if (ft_strcmp(sdl->obj[i]->c_type, STR_CYLINDR) == 0)
-		n = normal_cylinder(p, i, sdl);
+	{
+		sdl->norm_cylin = ray;
+		n = normal_cylinder(p, i, sdl, close_t);
+	}
 	col_out = vec_scale(sdl->f_color, computer_lighting(p, n, sdl,
 				vec_scale(ray.direct, -1)));
 	max_f = fmax(col_out.x, (fmax(col_out.y, col_out.z)));
