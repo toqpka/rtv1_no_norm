@@ -6,7 +6,7 @@
 /*   By: gwaymar- <gwaymar-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 03:54:45 by gwaymar-          #+#    #+#             */
-/*   Updated: 2019/10/25 02:11:33 by gwaymar-         ###   ########.fr       */
+/*   Updated: 2019/10/25 03:45:36 by gwaymar-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	fill_plane(char **split, t_plane *new_plane, int *i)
 	s = ft_strsplit(split[2], ',');
 	pars_pla.norm = vec_new(ft_atof(s[0]), ft_atof(s[1]), ft_atof(s[2]));
 	free_split_vec3_true(&s);
-	pars_pla.blesk = ft_atof(split[3]);
+	pars_pla.blesk = valid_blesk(ft_atof(split[3]));
 	s = ft_strsplit(split[4], ',');
 	pars_pla.color = vec_new(ft_atof(s[0]), ft_atof(s[1]), ft_atof(s[2]));
 	free_split_vec3_true(&s);
@@ -47,7 +47,7 @@ void	fill_cone(char **split, t_cone *new_cone, int *i)
 	free_split_vec3_true(&s);
 	pars_con.vector = unit_vector(pars_con.vector);
 	pars_con.ang = ft_atof(split[3]);
-	pars_con.blesk = ft_atof(split[4]);
+	pars_con.blesk = valid_blesk(ft_atof(split[4]));
 	s = ft_strsplit(split[5], ',');
 	pars_con.color = vec_new(ft_atof(s[0]), ft_atof(s[1]), ft_atof(s[2]));
 	free_split_vec3_true(&s);
@@ -71,8 +71,8 @@ void	fill_cylin(char **split, t_cylin *new_cylinder, int *i)
 	s = ft_strsplit(split[5], ',');
 	pars_cyl.color = vec_new(ft_atof(s[0]), ft_atof(s[1]), ft_atof(s[2]));
 	free_split_vec3_true(&s);
-	pars_cyl.blesk = ft_atof(split[4]);
-	pars_cyl.radius = ft_atof(split[3]);
+	pars_cyl.blesk = valid_blesk(ft_atof(split[4]));
+	pars_cyl.radius = valid_radius(ft_atof(split[3]));
 	new_cylinder[*i] = cylin_new(pars_cyl);
 	return ;
 }

@@ -6,7 +6,7 @@
 /*   By: gwaymar- <gwaymar-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/12 00:45:29 by gwaymar-          #+#    #+#             */
-/*   Updated: 2019/10/25 03:06:08 by gwaymar-         ###   ########.fr       */
+/*   Updated: 2019/10/25 04:12:54 by gwaymar-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ static uint8_t	init_sdl(t_sdl **sdl)
 	{
 		if (!((*sdl)->win = SDL_CreateWindow(WIN_TITLE,
 						SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
-						WIN_WIDTH, WIN_HEIGHT, SDL_WINDOW_SHOWN)))
+						WIN_WIDTH, WIN_HEIGHT,
+						SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE)))
 			return (put_error_sdl(WIN_ERROR, SDL_GetError()));
 		else
 		{
@@ -28,7 +29,7 @@ static uint8_t	init_sdl(t_sdl **sdl)
 				return (put_error_sdl(SUR_ERROR, SDL_GetError()));
 		}
 	}
-	return (1);
+	return (TRUE);
 }
 
 void			ft_init(t_sdl **sdl)
@@ -40,7 +41,6 @@ void			ft_init(t_sdl **sdl)
 	(*sdl)->image = NULL;
 	(*sdl)->run_main = 1;
 	(*sdl)->obj = NULL;
-	(*sdl)->av = NULL;
 	(*sdl)->rot_ang = vec_new(0, 0, 0);
 	if (!(init_sdl(sdl)))
 		ft_print_error_exit(&ft_putendl, "Error_sdl");
@@ -59,9 +59,8 @@ void			ft_close(t_sdl **sdl)
 void			read_init(t_sdl **sdl, char *av)
 {
 	ft_init(sdl);
-	(*sdl)->av = av;
 	if (!(parse_check(*sdl, av)))
-		ft_print_error_exit(&ft_putendl, "Error");
-	//get_list_objs(*sdl, av);
+		exit(1);
+	get_list_objs(*sdl, av);
 	return ;
 }

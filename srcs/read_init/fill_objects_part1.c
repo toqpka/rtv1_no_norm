@@ -6,7 +6,7 @@
 /*   By: gwaymar- <gwaymar-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 03:54:45 by gwaymar-          #+#    #+#             */
-/*   Updated: 2019/10/25 02:36:54 by gwaymar-         ###   ########.fr       */
+/*   Updated: 2019/10/25 03:46:18 by gwaymar-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	fill_camera(char **split, t_vec3 *from, t_vec3 *lookat)
 
 void	fill_ambient(char **split, double *amb)
 {
-	*amb = ft_atof(split[1]);
+	*amb = valid_intens(ft_atof(split[1]));
 	return ;
 }
 
@@ -38,7 +38,7 @@ void	fill_light(char **split, t_light *new_light, int *i)
 
 	*i -= 1;
 	s = ft_strsplit(split[1], ',');
-	pars_light.intens = ft_atof(split[2]);
+	pars_light.intens = valid_intens(ft_atof(split[2]));
 	pars_light.pos = vec_new(ft_atof(s[0]), ft_atof(s[1]), ft_atof(s[2]));
 	free_split_vec3_true(&s);
 	new_light[*i] = light_new(pars_light.pos, pars_light.intens);
@@ -54,8 +54,8 @@ void	fill_sphere(char **split, t_sphere *new_sphere, int *i)
 	s = ft_strsplit(split[1], ',');
 	pars_sph.center = vec_new(ft_atof(s[0]), ft_atof(s[1]), ft_atof(s[2]));
 	free_split_vec3_true(&s);
-	pars_sph.radius = ft_atof(split[2]);
-	pars_sph.blesk = ft_atof(split[3]);
+	pars_sph.radius = valid_radius(ft_atof(split[2]));
+	pars_sph.blesk = valid_blesk(ft_atof(split[3]));
 	s = ft_strsplit(split[4], ',');
 	pars_sph.color = vec_new(ft_atof(s[0]), ft_atof(s[1]), ft_atof(s[2]));
 	free_split_vec3_true(&s);

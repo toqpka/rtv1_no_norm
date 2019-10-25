@@ -6,7 +6,7 @@
 #    By: gwaymar- <gwaymar-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/01 17:42:35 by gwaymar-          #+#    #+#              #
-#    Updated: 2019/10/25 02:09:32 by gwaymar-         ###   ########.fr        #
+#    Updated: 2019/10/25 03:46:59 by gwaymar-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,6 +52,7 @@ SRCS_FILES := main.c color_pixel.c mem_buf.c\
 							read_init/get_list_objs.c\
 							read_init/exec_objects.c\
 							read_init/fill_all_parse.c\
+							read_init/valid_help.c\
 							sdl_render/sdl_loop.c\
 							sdl_render/sdl_render.c\
 							scene/scene1.c\

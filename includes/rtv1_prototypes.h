@@ -6,7 +6,7 @@
 /*   By: gwaymar- <gwaymar-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/10 16:20:57 by gwaymar-          #+#    #+#             */
-/*   Updated: 2019/10/25 02:37:26 by gwaymar-         ###   ########.fr       */
+/*   Updated: 2019/10/25 04:14:52 by gwaymar-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ int			put_error_sdl(char *str, const char *err);
 ** Parse functions
 */
 int			parse_check(t_sdl *sdl, char *av);
-void    fill_all_parse(t_light **new_light, t_all_obj *objs, t_sdl *sdl, char *path);
+void		fill_all_parse(t_light **new_light,
+			t_all_obj *objs, t_sdl *sdl, char *path);
 
 /*
 ** Valid_parse
@@ -51,6 +52,9 @@ int			try_find_params_3(char *block1, char *block3);
 int			try_find_params_4(char *block1, char *block4);
 int			try_find_params_5(char *block1, char *block5);
 int			try_find_params_6(char *block1, char *block6);
+double		valid_intens(double n);
+double		valid_radius(double n);
+double		valid_blesk(double n);
 
 /*
 ** Valid_parse_helper

@@ -6,7 +6,7 @@
 /*   By: gwaymar- <gwaymar-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 20:46:29 by gwaymar-          #+#    #+#             */
-/*   Updated: 2019/10/25 02:59:17 by gwaymar-         ###   ########.fr       */
+/*   Updated: 2019/10/25 03:22:02 by gwaymar-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,6 @@ static int			check_objs(t_sdl *sdl, char *path)
 		if (!check_all_block(sdl))
 			return (false_free_close_split(&tmp, &fd, &split));
 		free_tmp_free_split(&tmp, &split);
-
 	}
 	close(fd);
 	return (TRUE);
