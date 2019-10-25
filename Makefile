@@ -6,7 +6,7 @@
 #    By: gwaymar- <gwaymar-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/01 17:42:35 by gwaymar-          #+#    #+#              #
-#    Updated: 2019/10/25 03:46:59 by gwaymar-         ###   ########.fr        #
+#    Updated: 2019/10/25 05:41:18 by gwaymar-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,8 +71,7 @@ SUB_DIR_OBJ := $(patsubst %, $(OBJECTS_PATH)/%, $(notdir $(shell find $(SRCS_PAT
 
 # cc FLAGS
 CC := gcc
-# CCFLAGS := -Wall -Wextra -Werror
-CCFLAGS := -g
+CCFLAGS := -Wall -Wextra -Werror
 
 # SDL2
 SDL_PATH := ./sdl2/Frameworks

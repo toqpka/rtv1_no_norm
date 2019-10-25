@@ -6,7 +6,7 @@
 /*   By: gwaymar- <gwaymar-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 20:46:29 by gwaymar-          #+#    #+#             */
-/*   Updated: 2019/10/25 03:22:02 by gwaymar-         ###   ########.fr       */
+/*   Updated: 2019/10/25 05:41:40 by gwaymar-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ static int			check_blok(t_sdl *sdl, int white_space_cnt)
 static int			check_empty(char *path)
 {
 	int		fd;
-	int		gnl;
 	char	*tmp;
 
 	fd = open(path, O_RDONLY);

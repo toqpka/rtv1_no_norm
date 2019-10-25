@@ -6,7 +6,7 @@
 /*   By: gwaymar- <gwaymar-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/19 03:08:11 by gwaymar-          #+#    #+#             */
-/*   Updated: 2019/10/25 03:31:59 by gwaymar-         ###   ########.fr       */
+/*   Updated: 2019/10/25 05:11:56 by gwaymar-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void			calc_blesk(t_calc_light me, t_sdl *rt)
 
 	li = unit_vector(vec_op_sub(me.l.pos, me.p));
 	rt->n_dot_l = vec_dot(li, me.n);
-	if (rt->n_dot_l > 0)
-		rt->intens += me.l.intens * rt->n_dot_l / vec_length(li);
+	if (rt->n_dot_l > 0 && vec_length(li))
+		rt->intens += 1.0 * me.l.intens * rt->n_dot_l / vec_length(li);
 	if (rt->f_blesk > 0)
 	{
 		r = vec_op_sub(vec_scale(me.n, 2.f * vec_dot(me.n, li)), li);

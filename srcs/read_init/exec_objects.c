@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exec_objects_part.c                                :+:      :+:    :+:   */
+/*   exec_objects.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gwaymar- <gwaymar-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 23:20:07 by gwaymar-          #+#    #+#             */
-/*   Updated: 2019/10/24 23:22:36 by gwaymar-         ###   ########.fr       */
+/*   Updated: 2019/10/25 05:43:31 by gwaymar-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ t_cylin			*exec_cylinder_1(t_sdl *sdl)
 {
 	t_cylin		*cylin;
 	int			nbrs_cylin;
-	t_vec3		v;
 
 	if (!(nbrs_cylin = sdl->nbrs.num_cyl))
 		return (NULL);

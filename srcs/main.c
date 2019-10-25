@@ -6,7 +6,7 @@
 /*   By: gwaymar- <gwaymar-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/10 18:32:56 by gwaymar-          #+#    #+#             */
-/*   Updated: 2019/10/25 04:12:12 by gwaymar-         ###   ########.fr       */
+/*   Updated: 2019/10/25 04:44:28 by gwaymar-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void			how_to_use(void)
 {
-	ft_print_error_exit(&ft_putendl, "Usage: ./RTv1 scene1");
+	ft_print_error_exit(&ft_putendl, "Usage: ./RTv1 filename");
 }
 
 int				main(int argc, char **argv)
