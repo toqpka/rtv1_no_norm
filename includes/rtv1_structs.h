@@ -6,7 +6,7 @@
 /*   By: gwaymar- <gwaymar-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/10 16:20:54 by gwaymar-          #+#    #+#             */
-/*   Updated: 2019/10/22 08:41:41 by gwaymar-         ###   ########.fr       */
+/*   Updated: 2019/10/25 03:03:31 by gwaymar-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,6 +126,7 @@ typedef struct		s_nbr_all
 	int				num_cyl;
 	int				num_lig;
 	int				num_cam;
+	int				num_amb;
 }					t_nbr_all;
 
 /*
@@ -152,18 +153,20 @@ typedef struct		s_sdl
 	double			f_blesk;
 	t_vec3			f_color;
 	t_vec3			norm_cone;
-	t_ray				norm_cylin;
+	t_ray			norm_cylin;
 	double			k;
 	t_vec3			lookat;
 	t_vec3			lookfr;
 	t_vec3			rot_ang;
 	t_nbr_all		nbrs;
-	char				*block_1;
-	char				*block_2;
-	char				*block_3;
-	char				*block_4;
-	char				*block_5;
-	char				*block_6;
+	char			*block_1;
+	char			*block_2;
+	char			*block_3;
+	char			*block_4;
+	char			*block_5;
+	char			*block_6;
+	char			*av;
+	double		ambient;
 }					t_sdl;
 
 #endif

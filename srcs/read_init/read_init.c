@@ -6,7 +6,7 @@
 /*   By: gwaymar- <gwaymar-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/12 00:45:29 by gwaymar-          #+#    #+#             */
-/*   Updated: 2019/10/22 07:38:21 by gwaymar-         ###   ########.fr       */
+/*   Updated: 2019/10/25 03:06:08 by gwaymar-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,9 @@ void			ft_init(t_sdl **sdl)
 	(*sdl)->win = NULL;
 	(*sdl)->screen = NULL;
 	(*sdl)->image = NULL;
-	(*sdl)->run_main = 1;	
+	(*sdl)->run_main = 1;
 	(*sdl)->obj = NULL;
+	(*sdl)->av = NULL;
 	(*sdl)->rot_ang = vec_new(0, 0, 0);
 	if (!(init_sdl(sdl)))
 		ft_print_error_exit(&ft_putendl, "Error_sdl");
@@ -58,15 +59,9 @@ void			ft_close(t_sdl **sdl)
 void			read_init(t_sdl **sdl, char *av)
 {
 	ft_init(sdl);
+	(*sdl)->av = av;
 	if (!(parse_check(*sdl, av)))
-	{
-		printf("BAD!\n"); /////////
-		how_to_use();
-	}
-	get_list_objs(*sdl, av);
-
-	//////////  OUT  after  parsing
-
-	printf("GOOOD!\n"); ///////////
+		ft_print_error_exit(&ft_putendl, "Error");
+	//get_list_objs(*sdl, av);
 	return ;
 }

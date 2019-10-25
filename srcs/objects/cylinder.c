@@ -6,7 +6,7 @@
 /*   By: hkuhic <hkuhic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/13 21:08:46 by hkuhic            #+#    #+#             */
-/*   Updated: 2019/10/22 06:02:28 by gwaymar-         ###   ########.fr       */
+/*   Updated: 2019/10/22 17:34:58 by hkuhic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ t_cylin		*create_null_list_cylinder(int nbr)
 	return (n);
 }
 
-t_cylin		cylin_new(t_cylin		pars_cylin)
+t_cylin		cylin_new(t_cylin pars_cylin)
 {
 	t_cylin		new_cylin;
 	double		blesk;

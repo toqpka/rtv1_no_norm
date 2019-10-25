@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   free_part2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gwaymar- <gwaymar-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/10 18:32:56 by gwaymar-          #+#    #+#             */
-/*   Updated: 2019/10/24 23:35:04 by gwaymar-         ###   ########.fr       */
+/*   Created: 2019/10/24 22:17:08 by gwaymar-          #+#    #+#             */
+/*   Updated: 2019/10/25 02:21:55 by gwaymar-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-void			how_to_use(void)
+void			free_tmp_free_split(char **tmp, char ***str)
 {
-	ft_print_error_exit(&ft_putendl, "Usage: ./RTv1 scene1");
+	int		i;
+
+	i = -1;
+	while ((*str)[++i])
+		free((*str)[i]);
+	free(*str);
+	free(*tmp);
+	return ;
 }
 
-int				main(int argc, char **argv)
+int				wrong_param_false(void)
 {
-	t_sdl		*sdl;
-
-	if (argc != 2)
-		how_to_use();
-	read_init(&sdl, argv[1]);
-	//sdl_render(sdl);
-	sdl_loop(sdl);
-	ft_close(&sdl);
-	return (0);
+	ft_putstr("Error: wrong params in file\n");
+	return (FALSE);
 }

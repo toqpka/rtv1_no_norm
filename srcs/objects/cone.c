@@ -6,7 +6,7 @@
 /*   By: hkuhic <hkuhic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/13 17:28:42 by hkuhic            #+#    #+#             */
-/*   Updated: 2019/10/22 06:01:32 by gwaymar-         ###   ########.fr       */
+/*   Updated: 2019/10/22 17:34:53 by hkuhic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ t_cone		*create_null_list_cone(int nbr)
 	return (n);
 }
 
-t_cone		cone_new(t_cone		pars_cone)
+t_cone		cone_new(t_cone pars_cone)
 {
 	t_cone		new_cone;
 	double		blesk;

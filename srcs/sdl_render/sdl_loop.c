@@ -6,7 +6,7 @@
 /*   By: gwaymar- <gwaymar-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/28 00:30:14 by gwaymar-          #+#    #+#             */
-/*   Updated: 2019/10/19 07:54:36 by gwaymar-         ###   ########.fr       */
+/*   Updated: 2019/10/24 23:38:14 by gwaymar-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,11 @@ void		sdl_loop(t_sdl *sdl)
 					(SDL_KEYDOWN == sdl->event.type &&
 						SDL_SCANCODE_ESCAPE == sdl->event.key.keysym.scancode))
 				sdl->run_main = 0;
+			if (SDL_KEYDOWN == sdl->event.type && SDLK_w == sdl->event.key.keysym.sym)
+			{
+				get_list_objs(sdl, sdl->av);
+				sdl_render(sdl);
+			}
 		}
 	}
 	return ;
